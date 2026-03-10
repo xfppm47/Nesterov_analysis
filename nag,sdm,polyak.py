@@ -1,9 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# ---------------------------------------------------------
-# 1. Core Algorithms (Minimal Changes, Mathematically Correct)
-# ---------------------------------------------------------
 
 def sdm(f, grad, x_initial, alpha, iterations):
     """General Descent Method (Steepest Descent with fixed alpha)."""
@@ -32,8 +29,8 @@ def nag_fixed(f, grad, x_initial, alpha, iterations, beta):
     x_prev = x.copy()
     value = [f(x)]
     for _ in range(iterations):
-        y = x + beta * (x - x_prev)  # Look-ahead point
-        g = grad(y)                  # Gradient at look-ahead
+        y = x + beta * (x - x_prev) 
+        g = grad(y)                  
         x_prev, x = x.copy(), y - alpha * g
         value.append(f(x))
     return value
@@ -54,9 +51,6 @@ def nag_adaptive(f, grad, x_initial, alpha, iterations):
         value.append(f(x))
     return value
 
-# ---------------------------------------------------------
-# 2. Plotting Utility
-# ---------------------------------------------------------
 
 def plot_comparison(results, title):
     plt.figure(figsize=(10, 6))
@@ -70,9 +64,6 @@ def plot_comparison(results, title):
     plt.grid(True, which='both', linestyle='--', alpha=0.5)
     plt.show()
 
-# ---------------------------------------------------------
-# 3. Execution Logic for All Cases
-# ---------------------------------------------------------
 
 def run_combined_analysis():
     iters = 100
@@ -150,3 +141,4 @@ def run_combined_analysis():
 
 if __name__ == "__main__":
     run_combined_analysis()
+
